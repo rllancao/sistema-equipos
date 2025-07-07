@@ -1,0 +1,4 @@
+fpdf
+datetime
+tempfile
+pathlib

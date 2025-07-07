@@ -3,6 +3,7 @@ from fpdf import FPDF
 from datetime import datetime
 import tempfile
 import os
+from pathlib import Path
 
 # --- Clase PDF personalizada ---
 class PDF(FPDF):
@@ -13,7 +14,7 @@ class PDF(FPDF):
         """
         # Añadir logo en la esquina superior izquierda, si el archivo existe.
         # NOTA: El archivo 'Logo.png' debe estar en la misma carpeta que el script.
-        logo_path = 'Logo.png'
+        logo_path = Path(__file__).parent / 'Logo.png'
         if os.path.exists(logo_path):
             # Coordenadas x, y, y ancho de la imagen. La altura se ajusta automáticamente.
             self.image(logo_path, x=10, y=8, w=40)
