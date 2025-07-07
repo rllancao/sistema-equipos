@@ -13,11 +13,11 @@ class PDF(FPDF):
         Añade un logo en la esquina superior izquierda y un título centrado.
         """
         # Añadir logo en la esquina superior izquierda, si el archivo existe.
-        # NOTA: El archivo 'Logo.png' debe estar en la misma carpeta que el script.
+        # NOTA: El archivo 'Logo.png' debe estar en la misma carpeta que el script en GitHub.
         logo_path = Path(__file__).parent / 'Logo.png'
-        if os.path.exists(logo_path):
-            # Coordenadas x, y, y ancho de la imagen. La altura se ajusta automáticamente.
-            self.image(logo_path, x=10, y=8, w=40)
+        if logo_path.exists():
+            # CORRECCIÓN: Convertir el objeto Path a string para fpdf.
+            self.image(str(logo_path), x=10, y=8, w=40)
         
         # Mover la posición del cursor para el título para que no se superponga.
         self.set_y(15)
@@ -33,7 +33,6 @@ class PDF(FPDF):
         """
         Añade un título de capítulo/sección.
         """
-        
         self.set_font('Arial', 'B', 12)
         self.cell(0, 10, title, 0, 1, 'L')
         self.ln(4)
