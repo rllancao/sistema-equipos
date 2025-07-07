@@ -1,4 +1,2 @@
-FPDF
-datetime
-tempfile
-pathlib
+streamlit
+fpdf
